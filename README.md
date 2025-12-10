@@ -10,7 +10,7 @@ A Spring Boot backend application providing REST APIs for managing stocks and ex
 - Assign and remove stocks from exchanges.
 - Custom exception handling (`BusinessException`) with meaningful HTTP status codes.
 - Supports validation and error messages returned as strings.
-- Connects to a relational database (MySQL by default).
+- Connects to a H2 database (by default).
 - RESTful API endpoints for frontend integration.
 
 ---
