@@ -18,10 +18,8 @@ A Spring Boot backend application providing REST APIs for managing stocks and ex
 ## Tech Stack
 
 - **Backend:** Java 17, Spring Boot
-- **Database:** MySQL (or H2 for in-memory testing)
+- **Database:** H2 for in-memory testing
 - **Build Tool:** Maven
-- **Mapping:** DTOs and entity mapping
-- **Exception Handling:** Custom `BusinessExceptionHandler`
 
 ---
 
@@ -31,7 +29,6 @@ A Spring Boot backend application providing REST APIs for managing stocks and ex
 
 - Java 17+
 - Maven 3+
-- MySQL server (or H2 for testing)
 
 ---
 
