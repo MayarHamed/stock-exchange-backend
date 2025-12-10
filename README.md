@@ -1,29 +1,27 @@
-# Stock Exchange Frontend
+# Stock Exchange Backend
 
-A React-based frontend application for managing stock exchanges and stocks. This project allows users (based on their roles) to add, update, and delete stocks and exchanges, assign stocks to exchanges, and view stock and exchange information in a collapsible, user-friendly interface.
+A Spring Boot backend application providing REST APIs for managing stocks and exchanges. Supports CRUD operations, stock assignment to exchanges, and business-level exception handling.
 
 ---
 
 ## Features
 
-- Display list of exchanges and their assigned stocks.
-- Admin capabilities:
-  - Add, update, delete stocks.
-  - Add, delete exchanges.
-  - Assign/remove stocks from exchanges.
-- User capabilities:
-  - View list of stocks.
-  - View list of stock exchanges.
-- Error handling messages for backend exceptions.
+- CRUD operations for **Stocks** and **Exchanges**.
+- Assign and remove stocks from exchanges.
+- Custom exception handling (`BusinessException`) with meaningful HTTP status codes.
+- Supports validation and error messages returned as strings.
+- Connects to a relational database (MySQL by default).
+- RESTful API endpoints for frontend integration.
 
 ---
 
 ## Tech Stack
 
-- **Frontend:** React.js
-- **HTTP Requests:** Axios
-- **State Management:** React Hooks (`useState`, `useEffect`)
-- **Styling:** CSS modules / custom classes
+- **Backend:** Java 17, Spring Boot
+- **Database:** MySQL (or H2 for in-memory testing)
+- **Build Tool:** Maven
+- **Mapping:** DTOs and entity mapping
+- **Exception Handling:** Custom `BusinessExceptionHandler`
 
 ---
 
@@ -31,9 +29,9 @@ A React-based frontend application for managing stock exchanges and stocks. This
 
 ### Prerequisites
 
-- Node.js (>=14 recommended)
-- npm
-- Backend API running and accessible (e.g., `http://localhost:3030/api`)
+- Java 17+
+- Maven 3+
+- MySQL server (or H2 for testing)
 
 ---
 
@@ -42,15 +40,34 @@ A React-based frontend application for managing stock exchanges and stocks. This
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YourUsername/stock-exchange-frontend.git
-cd stock-exchange-frontend
+git clone https://github.com/YourUsername/stock-exchange-backend.git
+cd stock-exchange-backend
 ```
 
-2. Install dependencies and run
+2. Build and run the app:
 
 ```
-npm install
-npm start
+mvn clean install
+mvn spring-boot:run
 ```
 
+### API Endpoints
 
+## Stocks
+
+- GET /api/stocks - List all stocks
+- POST /api/stocks - Add a new stock
+- PUT /api/stocks/{id}/price - Update stock price
+- DELETE /api/stocks/{id} - Delete a stock
+
+## Exchanges
+
+- GET /api/exchanges - List all exchanges
+- POST /api/exchanges - Add a new exchange
+- DELETE /api/exchanges/{id} - Delete an exchange
+- POST /api/exchanges/{exchangeId}/stocks/{stockId} - Assign stock to exchange
+- DELETE /api/exchanges/{exchangeId}/stocks/{stockId} - Remove stock from exchange
+
+### Error Handling
+
+Returns string messages for business exceptions with proper HTTP status codes.
